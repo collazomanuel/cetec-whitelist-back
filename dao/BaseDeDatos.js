@@ -1,4 +1,4 @@
-import user from "../models/user.js"
+var whitelist = require("../models/user.js");
 
 class ErrorEmailAlreadyExists extends Error {
     
@@ -33,7 +33,7 @@ class ErrorIdDoesNotExist extends Error {
 class BaseDeDatos {
 
     constructor(){
-        //this.NLUModel = NLU;
+        this.userModel = whitelist;
     }
 
     async get_whitelist () {
@@ -161,4 +161,4 @@ class BaseDeDatos {
     }
 }
 
-export default BaseDeDatos;
+module.exports = BaseDeDatos;

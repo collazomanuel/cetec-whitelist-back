@@ -1,4 +1,4 @@
-import BaseDeDatos from "../dao/BaseDeDatos.js";
+var BaseDeDatos = require("../dao/BaseDeDatos.js");
 
 let baseDeDatos = new BaseDeDatos();
 
@@ -57,10 +57,10 @@ const delete_user = async (req, res, next) => {
   }
 }
 
-export {
+module.exports = {
   get_whitelist,
   get_user,
   add_user,
   put_user,
   delete_user
-}
+};

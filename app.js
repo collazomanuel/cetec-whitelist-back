@@ -3,19 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var mongoose = require('mongoose');
 
-var dotenv = require("dotenv");
-var path = require('path');
-var fileURLToPath = require('url');
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-dotenv.config({path:__dirname+'/.env'});
-
-const url = process.env.MONGO_URL;
-
+require('./config/database.js');
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -28,8 +18,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
 
 app.use('/', indexRouter);
 

@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+var mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema({
+const whitelistSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -22,6 +22,6 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-const user = mongoose.model("user", userSchema);
+const whitelist = mongoose.model("whitelist", whitelistSchema);
 
-export default user;
+module.exports = whitelist;
