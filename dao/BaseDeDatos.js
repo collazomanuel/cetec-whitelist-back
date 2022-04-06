@@ -46,7 +46,7 @@ class BaseDeDatos {
             console.log("Error: nombre vacío.");
             throw new ErrorFieldIsEmpty("nombre");
         }
-        return this.NLUModel
+        return this.userModel
                     .findOne({email:email})
                     .lean()
                     .then(result => {return result})
@@ -55,7 +55,7 @@ class BaseDeDatos {
 
     async user_email_exists(email) {
 
-        return this.NLUModel
+        return this.userModel
                     .findOne({ email: email })
                     .select("email")
                     .lean()
@@ -70,12 +70,12 @@ class BaseDeDatos {
             console.log("Error: nombre vacío.");
             throw new ErrorFieldIsEmpty("nombre");
         }
-
+        
         if (surname == null || surname === '') {
             console.log("Error: apellido vacío.");
             throw new ErrorFieldIsEmpty("apellido");
         }
-
+        
         if (email == null || email === '') {
             console.log("Error: email vacío.");
             throw new ErrorFieldIsEmpty("email");
