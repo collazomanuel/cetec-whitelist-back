@@ -144,10 +144,8 @@ class BaseDeDatos {
             return user_structure;
         } catch (e){
             if (e instanceof ErrorFieldIsEmpty || e instanceof ErrorEmailAlreadyExists) {
-                console.log("1:",e);
                 throw e;
             }
-            console.log("2:",e);
             throw new ErrorEmailAlreadyExists(); // ?
         }
     }

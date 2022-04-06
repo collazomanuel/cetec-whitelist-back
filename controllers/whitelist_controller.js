@@ -50,6 +50,7 @@ const delete_user = async (req, res, next) => {
 
       if (!user) {
           res.status(404).send("No user found");
+          return
       }
       res.status(200).send(user);
   } catch (error) {
