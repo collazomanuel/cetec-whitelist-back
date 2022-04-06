@@ -43,8 +43,8 @@ class BaseDeDatos {
 
     async get_user (email) {
         if (email == null || email === '') {
-            console.log("Error: nombre vacío.");
-            throw new ErrorFieldIsEmpty("nombre");
+            console.log("Error: email vacío.");
+            throw new ErrorFieldIsEmpty("email");
         }
         return this.userModel
                     .findOne({email:email})
@@ -139,13 +139,15 @@ class BaseDeDatos {
                 else{
                     console.log("ID del usuario actualizado: ", id);
                 }
-            });
+            }).clone();
 
             return user_structure;
         } catch (e){
             if (e instanceof ErrorFieldIsEmpty || e instanceof ErrorEmailAlreadyExists) {
+                console.log("1:",e);
                 throw e;
             }
+            console.log("2:",e);
             throw new ErrorEmailAlreadyExists(); // ?
         }
     }
