@@ -44,7 +44,7 @@ const put_user = async (req, res, next) => {
 }
 
 const delete_user = async (req, res, next) => {
-
+/*
   try {
       const user = await baseDeDatos.delete_user(req.params.id);
 
@@ -53,6 +53,14 @@ const delete_user = async (req, res, next) => {
           return
       }
       res.status(200).send(user);
+  } catch (error) {
+      res.status(500).send(error);
+  }
+*/
+
+  try {
+      const user = await baseDeDatos.delete_user(req.params.id);
+      res.send(user);
   } catch (error) {
       res.status(500).send(error);
   }

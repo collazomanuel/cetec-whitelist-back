@@ -125,6 +125,33 @@ class BaseDeDatos {
                 console.log("Error: nombre, apellido y email vacíos.");
                 throw new ErrorFieldIsEmpty("nombre, apellido y email");
             }
+
+            if (email_is_empty) {
+                console.log("Error: email vacío.");
+                throw new ErrorFieldIsEmpty("email");
+            }
+
+            if (name_is_empty && surname_is_empty) {
+                console.log("Error: nombre, apellido y email vacíos.");
+                throw new ErrorFieldIsEmpty("nombre, apellido y email");
+            }
+
+
+            if (name_is_empty) {
+                console.log("Error: nombre vacío.");
+                throw new ErrorFieldIsEmpty("nombre");
+            }
+            
+            if (surname_is_empty) {
+                console.log("Error: apellido vacío.");
+                throw new ErrorFieldIsEmpty("apellido");
+            }
+    
+            
+            if (await this.user_email_exists(email)){
+                console.log("Error: " + email + " ya existe.");
+                throw new ErrorEmailAlreadyExists();
+            }
             
             let structure = await this.get_user(email);
 
